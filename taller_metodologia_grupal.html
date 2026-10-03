@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Práctico de Metodología de la Investigación - Registro Grupal</title>
+    <style>
+        :root {
+            --primary-color: #002D62; /* Azul institucional */
+            --secondary-color: #CE1126; /* Rojo institucional */
+            --accent-color: #F4F6F9;
+            --text-color: #333333;
+            --border-color: #CCCCCC;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--secondary-color);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 24px;
+        }
+        .header h2 {
+            color: var(--secondary-color);
+            margin: 5px 0 0 0;
+            font-size: 18px;
+        }
+        .header p {
+            margin: 8px 0 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .section {
+            background: var(--accent-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 6px 6px 0;
+        }
+        .section h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 18px;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #222;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            height: 90px;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 45, 98, 0.2);
+        }
+        .members-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .btn-group {
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #001f42;
+        }
+        button.save-btn {
+            background-color: #28a745;
+        }
+        button.save-btn:hover {
+            background-color: #218838;
+        }
+        button.clear-btn {
+            background-color: #dc3545;
+        }
+        button.clear-btn:hover {
+            background-color: #c82333;
+        }
+        button.whatsapp {
+            background-color: #25D366;
+        }
+        button.whatsapp:hover {
+            background-color: #1EBE5D;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .status-msg {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border: none; padding: 0; }
+            button, .instructions, .status-msg { display: none; }
+            textarea, input, select { border: none; border-bottom: 1px solid #333; background: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>TALLER PRÁCTICO DE METODOLOGÍA DE LA INVESTIGACIÓN</h1>
+        <h2>Instrumento de Registro y Producción Grupal</h2>
+        <p>Universidad / Institución Educativa — Formulario de Actividad Práctica</p>
+    </div>
+
+    <div class="instructions">
+        <strong>Instrucciones para el Grupo:</strong> Complete cada apartado con su equipo. 
+        <br>1. Haga clic en <strong>"1. Registrar y Guardar Datos"</strong> para asegurar que los nombres y respuestas queden grabados permanentemente en el documento antes de descargar.
+        <br>2. Use <strong>"Borrar Todo / Limpiar"</strong> si necesita reiniciar el formulario en blanco.
+        <br>3. Haga clic en <strong>"2. Descargar Archivo Lleno"</strong> y envíelo a su docente por WhatsApp.
+    </div>
+
+    <form id="workshopForm">
+        <!-- Datos Generales -->
+        <div class="section">
+            <h3>1. Datos Generales del Grupo</h3>
+            <label for="groupName">Nombre del Grupo / Equipo:</label>
+            <input type="text" id="groupName" name="groupName" placeholder="Ej. Grupo Investigadores del Saber" required>
+
+            <label>Integrantes del Grupo:</label>
+            <div class="members-container">
+                <input type="text" id="member1" name="member1" placeholder="Integrante 1 (Coordinador/a)" required>
+                <input type="text" id="member2" name="member2" placeholder="Integrante 2">
+                <input type="text" id="member3" name="member3" placeholder="Integrante 3">
+                <input type="text" id="member4" name="member4" placeholder="Integrante 4">
+            </div>
+            
+            <label for="studyArea">Tema o Línea de Investigación:</label>
+            <input type="text" id="studyArea" name="studyArea" placeholder="Describa brevemente el tema central del estudio">
+        </div>
+
+        <!-- Actividad 1: Planteamiento del Problema -->
+        <div class="section">
+            <h3>2. Planteamiento del Problema y Pregunta de Investigación</h3>
+            <label for="probContext">Contextualización del Problema (Realidad observada):</label>
+            <textarea id="probContext" name="probContext" placeholder="Describa la situación actual, antecedentes y síntomas del problema detectado..."></textarea>
+
+            <label for="researchQuestion">Pregunta de Investigación Principal:</label>
+            <textarea id="researchQuestion" name="researchQuestion" style="height: 60px;" placeholder="¿Cuál es la interrogante central que busca responder esta investigación?"></textarea>
+        </div>
+
+        <!-- Actividad 2: Objetivos y Justificación -->
+        <div class="section">
+            <h3>3. Objetivos y Justificación</h3>
+            <label for="generalObjective">Objetivo General:</label>
+            <textarea id="generalObjective" name="generalObjective" style="height: 60px;" placeholder="Debe iniciar con un verbo en infinitivo y responder al qué, cómo y para qué..."></textarea>
+
+            <label for="justification">Justificación y Viabilidad del Estudio:</label>
+            <textarea id="justification" name="justification" placeholder="¿Por qué es importante realizar esta investigación? ¿A quién beneficia?"></textarea>
+        </div>
+
+        <!-- Actividad 3: Marco Metodológico -->
+        <div class="section">
+            <h3>4. Diseño Metodológico Preliminar</h3>
+            <label for="methodType">Enfoque y Tipo de Investigación:</label>
+            <select id="methodType" name="methodType">
+                <option value="">Seleccione el enfoque...</option>
+                <option value="Cuantitativo">Cuantitativo</option>
+                <option value="Cualitativo">Cualitativo</option>
+                <option value="Mixto">Mixto</option>
+            </select>
+
+            <label for="populationSample">Población y Muestra / Sujetos de Estudio:</label>
+            <textarea id="populationSample" name="populationSample" placeholder="Defina quiénes serán los participantes o fuentes de información..."></textarea>
+
+            <label for="techniques">Técnicas e Instrumentos de Recolección de Datos:</label>
+            <textarea id="techniques" name="techniques" placeholder="Encuestas, entrevistas, observación, cuestionarios, etc..."></textarea>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="btn-group">
+            <button type="button" class="save-btn" onclick="registrarYFijarDatos()">💾 1. Registrar y Guardar</button>
+            <button type="button" class="clear-btn" onclick="limpiarFormulario()">🗑️ Borrar Todo / Limpiar</button>
+            <button type="button" onclick="exportarArchivo()">📥 2. Descargar Archivo</button>
+            <button type="button" class="whatsapp" onclick="shareWhatsApp()">📱 WhatsApp</button>
+        </div>
+        <div id="statusMessage" class="status-msg"></div>
+    </form>
+</div>
+
+<script>
+    // Al cargar la página, restaurar datos previos y fijar los valores en los atributos 'value' de los inputs y textareas
+    document.addEventListener("DOMContentLoaded", function() {
+        const savedData = localStorage.getItem("workshopData");
+        if (savedData) {
+            const formData = JSON.parse(savedData);
+            for (const key in formData) {
+                const el = document.getElementById(key) || document.getElementsByName(key)[0];
+                if (el) {
+                    if (Array.isArray(formData[key])) {
+                        const elements = document.getElementsByName(key);
+                        formData[key].forEach((val, idx) => {
+                            if (elements[idx]) {
+                                elements[idx].value = val;
+                                elements[idx].setAttribute('value', val);
+                            }
+                        });
+                    } else {
+                        el.value = formData[key];
+                        if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+                            el.setAttribute('value', formData[key]);
+                        } else if (el.tagName === 'TEXTAREA') {
+                            el.textContent = formData[key];
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Guardar automáticamente en localStorage mientras escriben
+    const form = document.getElementById("workshopForm");
+    form.addEventListener("input", function() {
+        guardarEnMemoria();
+    });
+
+    function guardarEnMemoria() {
+        const formData = {};
+        const inputs = form.querySelectorAll("input, textarea, select");
+        inputs.forEach(input => {
+            if (input.name) {
+                if (input.type === "text" && document.getElementsByName(input.name).length > 1) {
+                    if (!formData[input.name]) formData[input.name] = [];
+                    formData[input.name].push(input.value);
+                } else {
+                    formData[input.name] = input.value;
+                }
+            }
+        });
+        localStorage.setItem("workshopData", JSON.stringify(formData));
+    }
+
+    // Paso 1: Fijar explícitamente los valores actuales en los atributos HTML para que al descargar formen parte del código fuente
+    function registrarYFijarDatos() {
+        guardarEnMemoria();
+        const inputs = form.querySelectorAll("input, select");
+        inputs.forEach(input => {
+            if (input.value) {
+                input.setAttribute('value', input.value);
+            } else {
+                input.removeAttribute('value');
+            }
+        });
+
+        const textareas = form.querySelectorAll("textarea");
+        textareas.forEach(textarea => {
+            textarea.textContent = textarea.value;
+        });
+
+        const status = document.getElementById("statusMessage");
+        status.style.color = "#28a745";
+        status.textContent = "¡Datos registrados y fijados con éxito en el documento!";
+    }
+
+    // Borrar / Limpiar formulario y memoria local
+    function limpiarFormulario() {
+        if (confirm("¿Está seguro de que desea borrar todos los datos ingresados y dejar el formulario en blanco?")) {
+            localStorage.removeItem("workshopData");
+            form.reset();
+            const inputs = form.querySelectorAll("input, select");
+            inputs.forEach(input => input.removeAttribute('value'));
+            const textareas = form.querySelectorAll("textarea");
+            textareas.forEach(textarea => textarea.textContent = '');
+            const status = document.getElementById("statusMessage");
+            status.style.color = "#dc3545";
+            status.textContent = "Formulario limpiado con éxito. Este archivo ahora está listo y vacío para compartir.";
+        }
+    }
+
+    // Paso 2: Descargar el archivo con los datos ya embebidos en el HTML
+    function exportarArchivo() {
+        registrarYFijarDatos();
+
+        const groupName = document.getElementById("groupName").value || "Grupo_Trabajo";
+        const htmlContent = document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `Reporte_${groupName.replace(/\s+/g, '_')}.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    function shareWhatsApp() {
+        registrarYFijarDatos();
+        const groupName = document.getElementById("groupName").value || "Mi Grupo";
+        const text = `Saludos profe, aquí le comparto el reporte de trabajo práctico completado del grupo: *${groupName}*.`;
+        const encodedText = encodeURIComponent(text);
+        window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
